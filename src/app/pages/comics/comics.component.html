@@ -1,0 +1,77 @@
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <div *ngFor="let comic of comics">
+    <div class="card">
+      <img src="{{ comic.thumbnail.path }}.{{ comic.thumbnail.extension }}" class="card-img-top rounded mx-auto d-block"
+        alt="..." style="cursor: pointer" (click)="open(content)" />
+
+      <div class="card-body">
+        <h5 class="card-title">{{ comic.title }}</h5>
+
+        <span class="badge bg-secondary">{{comic.variantDescription}}</span>
+        <span class="card-title">{{ comic.prices[0].price | currency }}</span>
+      </div>
+    </div>
+
+    <!-- Modal do comics ao clicar para comprar produto -->
+    <ng-template #content let-c="close" let-d="dismiss">
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">COMPRAR PRODUTO</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+      </div>
+
+      <div class="modal-body">
+        <div class="row">
+          <div class="col">
+            <img src="{{ comic.thumbnail.path }}.{{ comic.thumbnail.extension }}" class="img-thumbnail" alt="..."
+              style="width: 4rem; height: 6rem" />
+          </div>
+          <div class="col">
+            <p>PRODUTO: {{ comic.title }}</p>
+
+          </div>
+        </div>
+      </div>
+
+      <form [formGroup]="formulario" class="container">
+
+        <div class="row mb-3">
+          <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">EMAIL:</label>
+          <div class="col-sm-10">
+            <input type="email" class="form-control form-control-sm" id="colFormLabelSm"
+              placeholder="EX: exmemple@marvel.com" formControlName="email" />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">CARTÃO:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control form-control-sm" id="colFormLabelSm" placeholder="EX: 424242424242"
+              formControlName="cartao" />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">CÓDIGO:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control form-control-sm" id="colFormLabelSm" placeholder="EX: 777"
+              formControlName="codigo" />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">CUPOM:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control form-control-sm" id="colFormLabelSm" placeholder="EX: COMUM"
+              formControlName="cupom" />
+          </div>
+        </div>
+      </form>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="comprar(comic.prices[0].price)">
+          LEVAR AGORA!!! {{ comic.prices[0].price | currency }}
+        </button>
+      </div>
+    </ng-template>
+    <!-- final do modal -->
+  </div>
+</div>
