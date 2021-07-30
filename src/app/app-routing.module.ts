@@ -4,11 +4,16 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { ComicsComponent } from './pages/comics/comics.component';
 
+
 const routes: Routes = [
   {
-  path:"home",
+  path:"",
   component:HomeComponent
   },
+  {
+    path:"home",
+    component:HomeComponent
+    },
   {
     path:"catalog",
     component:CatalogComponent
@@ -16,7 +21,8 @@ const routes: Routes = [
   {
     path:"catalog/:id",
       component:ComicsComponent
-  }
+  },
+
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
