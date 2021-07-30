@@ -36,7 +36,7 @@
 
   <img src="./src/assets/img/marvel1.gif" alt="Gif">
   <img src="./src/assets/img/mobilemarvel.gif" alt="Gif">
-  <img src="./src/assets/img/comicssmarvel.png" alt="foto">
+  <img src="./src/assets/img/comicsmarvel.png" alt="foto">
   <img src="./src/assets/img/marvel.png" alt="foto">
   
 </div>
